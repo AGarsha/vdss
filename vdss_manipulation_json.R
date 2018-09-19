@@ -2,7 +2,7 @@ library(jsonlite)
 
 json_files <- list.files(path = "~/", pattern = "*v1.json") # center names
 
-print(json_files)
+head(json_files)
 
 center_names <- lapply(X = json_files, FUN = read_json, simplifyVector = FALSE, simplifyDataFrame = TRUE)
 
