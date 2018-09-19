@@ -1,4 +1,4 @@
-library(jasonlite)
+library(jsonlite)
 
 json_files <- list.files(path = "~/", pattern = "*v1.json") # center names
 
@@ -27,3 +27,11 @@ for (i in 2:8){
 }
 
 names(outfile) <- c("label", "center_names", "center_address")
+
+url <- 'https://maps.googleapis.com/maps/api/geocode/json?address='
+
+key <- writeLines(con = "~/api_key")
+
+requests <- paste0(url, gsub(pattern = " ", replace = "+", x = gsub(pattern = "\\.", replace = "", x = outfile$center_address)), key)
+
+writeLines(requests, con = "~/vdss_requests.txt", sep = "\n")
